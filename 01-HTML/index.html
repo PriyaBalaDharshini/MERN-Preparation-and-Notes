@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Elements Demo (No CSS)</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>HTML5 Elements — Live Demo (No CSS)</h1>
+        <p>Every major semantic, media, form, and interactive HTML5 element, shown with browser default styling.</p>
+    </header>
+
+    <!-- ============ NAV ============ -->
+    <h2>&lt;nav&gt;, &lt;header&gt;, &lt;main&gt;, &lt;footer&gt;</h2>
+    <nav>
+        <ul>
+            <li><a href="#semantic">Semantic</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#interactive">Interactive</a></li>
+        </ul>
+    </nav>
+
+    <!-- ============ SEMANTIC STRUCTURE ============ -->
+    <h2 id="semantic">Semantic Sectioning Elements</h2>
+
+    <article>
+        <h3>Article Title</h3>
+        <section>
+            <p>This is a &lt;section&gt; inside an &lt;article&gt; — a thematic grouping of related content.</p>
+        </section>
+        <aside>
+            <p><em>This is an &lt;aside&gt; — tangentially related content, like a sidebar note.</em></p>
+        </aside>
+    </article>
+
+    <!-- ============ TEXT-LEVEL ELEMENTS ============ -->
+    <h2>Text-Level Content Elements</h2>
+
+    <p>Search results found a <mark>highlighted match</mark> in the document.</p>
+    <p>Published on <time datetime="2026-01-30">July 30, 2026</time>.</p>
+    <p>Long URL wrapping: supercalifragilistic<wbr>expialidocious.com/path</p>
+
+    <figure>
+        <canvas id="figCanvas" width="300" height="100"></canvas>
+        <figcaption>Fig 1. A canvas rendered inside a figure element.</figcaption>
+    </figure>
+
+    <p>Product: Widget <data value="4029">SKU #4029</data></p>
+
+    <form oninput="sumResult.value = parseInt(a.value||0) + parseInt(b.value||0)">
+        <input type="number" id="a" value="4" style="width:60px"> +
+        <input type="number" id="b" value="6" style="width:60px"> =
+        <output name="sumResult" for="a b">10</output>
+    </form>
+
+    <p>Progress: <progress value="30" max="100"></progress> 70%</p>
+    <p>Disk usage: <meter value="0.6" min="0" max="1"></meter> 60% full</p>
+
+    <details>
+        <summary>Click to expand</summary>
+        <p>Hidden content revealed via native disclosure widget — no JavaScript needed.</p>
+    </details>
+
+    <!-- ============ MEDIA ============ -->
+    <h2 id="media">Media Elements</h2>
+
+    <p>&lt;audio&gt; + &lt;source&gt;</p>
+    <audio controls>
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <p>&lt;video&gt;</p>
+    <video controls width="320">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+    <p>&lt;canvas&gt;</p>
+    <canvas id="drawCanvas" width="300" height="120"></canvas>
+
+    <p>&lt;picture&gt;</p>
+    <picture>
+        <source media="(max-width: 500px)" srcset="https://placehold.co/150x80">
+        <img src="https://placehold.co/300x120" alt="Responsive placeholder image">
+    </picture>
+
+    <!-- ============ FORMS ============ -->
+    <h2 id="forms">Forms — New Input Types &amp; Elements</h2>
+
+    <p>
+        <label>email: <input type="email" placeholder="you@example.com"></label><br><br>
+        <label>date: <input type="date"></label><br><br>
+        <label>url: <input type="url" placeholder="https://example.com"></label><br><br>
+        <label>range: <input type="range" min="0" max="100" value="40"></label><br><br>
+        <label>color: <input type="color" value="#5cc8ff"></label>
+    </p>
+
+    <p>&lt;datalist&gt;</p>
+    <label>Pick a fruit:
+        <input list="fruits" placeholder="Type to search...">
+        <datalist id="fruits">
+            <option value="Apple">
+            <option value="Banana">
+            <option value="Mango">
+            <option value="Orange">
+        </datalist>
+    </label>
+
+    <!-- ============ INTERACTIVE / OTHER ============ -->
+    <h2 id="interactive">Interactive &amp; Other Elements</h2>
+
+    <p>&lt;dialog&gt;</p>
+    <button onclick="myDialog.showModal()">Open Dialog</button>
+    <dialog id="myDialog">
+        <p>This is a native &lt;dialog&gt; modal.</p>
+        <button onclick="myDialog.close()">Close</button>
+    </dialog>
+
+    <p>&lt;template&gt; (rendered via JS)</p>
+    <button onclick="useTemplate()">Insert Template Content</button>
+    <div id="templateTarget"></div>
+    <template id="myTemplate">
+        <p>This came from a &lt;template&gt; tag — invisible until cloned by JS.</p>
+    </template>
+
+    <p>Drag and Drop API</p>
+    <div draggable="true" id="dragItem" style="border:1px solid black; display:inline-block; padding:5px;">
+        Drag me
+    </div>
+    <div id="dropZone" style="border:1px dashed black; display:inline-block; padding:20px; margin-left:10px;">
+        Drop here
+    </div>
+<!-- comment -->
+    <p>Geolocation API</p>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="geoResult">Location not requested yet.</p>
+    
+
+    <footer>
+        <p>&lt;footer&gt; — End of HTML5 elements demo page.</p>
+    </footer>
+
+    <script>
+        // Figure canvas
+        const fc = document.getElementById('figCanvas').getContext('2d');
+        fc.fillStyle = 'blue';
+        fc.fillRect(20, 20, 160, 60);
+        fc.fillStyle = 'white';
+        fc.font = '14px sans-serif';
+        fc.fillText('canvas drawing', 35, 55);
+
+        // Draw canvas with simple shapes
+        const dc = document.getElementById('drawCanvas').getContext('2d');
+        dc.fillStyle = 'orange';
+        dc.beginPath();
+        dc.arc(60, 60, 40, 0, Math.PI * 2);
+        dc.fill();
+        dc.strokeStyle = 'blue';
+        dc.lineWidth = 3;
+        dc.strokeRect(140, 20, 120, 80);
+
+        // Template usage
+        function useTemplate() {
+            const tmpl = document.getElementById('myTemplate');
+            const clone = tmpl.content.cloneNode(true);
+            document.getElementById('templateTarget').appendChild(clone);
+        }
+
+        // Drag and drop
+        const dragItem = document.getElementById('dragItem');
+        const dropZone = document.getElementById('dropZone');
+        dragItem.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', 'dragged-item');
+        });
+        dropZone.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+        dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropZone.textContent = 'Dropped successfully!';
+        });
+
+        // Geolocation
+        function getLocation() {
+            const result = document.getElementById('geoResult');
+            if (!navigator.geolocation) {
+                result.textContent = 'Geolocation not supported in this browser.';
+                return;
+            }
+            result.textContent = 'Requesting permission...';
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    result.textContent = `Lat: ${pos.coords.latitude.toFixed(4)}, Lng: ${pos.coords.longitude.toFixed(4)}`;
+                },
+                err => {
+                    result.textContent = 'Permission denied or error: ' + err.message;
+                }
+            );
+        }
+
+
+    </script>
+
+</body>
+
+</html>
