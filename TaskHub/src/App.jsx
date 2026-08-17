@@ -8,7 +8,6 @@ import Notes from './pages/Notes';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Layout from './layouts/Layout';
-import Hi from './pages/Hi';
 
 const App = () => {
   return (
